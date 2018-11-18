@@ -1,8 +1,8 @@
-import { Cd } from './../../models/Cd';
-import { CdService } from './../../services/cd.service';
+import { Cd } from '../../models/Cd';
 import { Component } from '@angular/core';
 import { MenuController, ModalController } from 'ionic-angular';
 import { LendCdPage } from '../lend-cd/lend-cd';
+import {CdLivreProvider} from "../../providers/cd-livre/cd-livre.service";
 
 @Component({
   selector: 'page-cd-list',
@@ -12,11 +12,11 @@ export class CdListPage {
 
   listCd: Cd[];
 
-  constructor(private menuController: MenuController, private cdService: CdService, private modalController: ModalController) {
+  constructor(private menuController: MenuController, private cd_livreService: CdLivreProvider, private modalController: ModalController) {
   }
 
   ionViewWillEnter(){
-   this.listCd = this.cdService.cdList.slice();
+   this.listCd = this.cd_livreService.cdList.slice();
   }
 
   onLoadCd(index: number) {
